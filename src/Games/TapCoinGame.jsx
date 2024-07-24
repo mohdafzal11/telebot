@@ -275,172 +275,172 @@ const TapCoinGame = () => {
   ];
 
   return (
-    <WebAppProvider>
-      <div
-        className=" min-h-screen  overflow-hidden   flex flex-col justify-start mt-10  bg-custom-gradient-tapgame text-white font-display chakra-petch-bold  "
-        onCopy={(e) => e.preventDefault()}
-        onCut={(e) => e.preventDefault()}
-      >
-        <div className="space-y-2">
-          {/* levels */}
-          <div className="flex items-center justify-between mx-4">
-            <div className="flex justify-center items-center">
-              <Profile />
-            </div>
-            <div className="flex  justify-between items-center bg-[#FFFFE5] text-black   shadow-md  px-2 border-orange-400 border rounded-xl py-1">
-              <div className="flex  w-full justify-between items-center space-x-2">
-                <div className="flex justify-center items-center">
-                  <div className="w-20">Level - {levelNames[level - 1]}</div>
-                  <div className="w-[40vw] ">
-                    <div className="h-4 bg-orange-500 rounded-lg ">
-                      <div
-                        className="h-full bg-[#FDCD45] rounded-lg"
-                        style={{
-                          width: `${
-                            (userData.maxCoin / levelMinPoints[level]) * 100
-                          }%`,
-                        }}
-                      ></div>
-                    </div>
+    // <WebAppProvider>
+    <div
+      className=" min-h-screen  overflow-hidden   flex flex-col justify-start mt-10  bg-custom-gradient-tapgame text-white font-display chakra-petch-bold  "
+      onCopy={(e) => e.preventDefault()}
+      onCut={(e) => e.preventDefault()}
+    >
+      <div className="space-y-2">
+        {/* levels */}
+        <div className="flex items-center justify-between mx-4">
+          <div className="flex justify-center items-center">
+            <Profile />
+          </div>
+          <div className="flex  justify-between items-center bg-[#FFFFE5] text-black   shadow-md  px-2 border-orange-400 border rounded-xl py-1">
+            <div className="flex  w-full justify-between items-center space-x-2">
+              <div className="flex justify-center items-center">
+                <div className="w-20">Level - {levelNames[level - 1]}</div>
+                <div className="w-[40vw] ">
+                  <div className="h-4 bg-orange-500 rounded-lg ">
+                    <div
+                      className="h-full bg-[#FDCD45] rounded-lg"
+                      style={{
+                        width: `${
+                          (userData.maxCoin / levelMinPoints[level]) * 100
+                        }%`,
+                      }}
+                    ></div>
                   </div>
-                  <div
-                    onClick={() => {
-                      navigate("/levels");
-                    }}
+                </div>
+                <div
+                  onClick={() => {
+                    navigate("/levels");
+                  }}
+                >
+                  <svg
+                    className="h-3"
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 320 512"
                   >
-                    <svg
-                      className="h-3"
-                      xmlns="http://www.w3.org/2000/svg"
-                      viewBox="0 0 320 512"
-                    >
-                      <path d="M310.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-192 192c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L242.7 256 73.4 86.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l192 192z" />
-                    </svg>
-                  </div>
+                    <path d="M310.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-192 192c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L242.7 256 73.4 86.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l192 192z" />
+                  </svg>
                 </div>
               </div>
             </div>
           </div>
-
-          {/* daily reward */}
-          <div className="flex justify-between mx-4">
-            <div
-              onClick={() => navigate("/boost")}
-              className="w-28 shadow-md  p-1 flex flex-col items-center border-2 rounded-xl border-[#F9C399] text-black"
-            >
-              <img src={dailyreward} alt="" className="h-8 w-8" />
-              <div className="text-sm">Daily Reward</div>
-            </div>
-            <div
-              onClick={() => navigate("/dailyrewards")}
-              className="w-28 shadow-md  p-1 flex flex-col items-center border-2 rounded-xl border-[#F9C399] text-black"
-            >
-              <img src={dollar} alt="" className="h-8 w-8" />
-              <div className="text-sm">Daily Coins</div>
-            </div>
-            <div
-              onClick={() => navigate("/tasks")}
-              className="w-28 shadow-md  p-1 flex flex-col items-center border-2 rounded-xl border-[#F9C399] text-black"
-            >
-              <img src={dailytask} alt="" className="h-8" />
-              <div className="text-sm"> Daily Task</div>
-            </div>
-          </div>
-
-          {/* balance  */}
-          <div className="flex items-center justify-center">
-            <div className="flex items-center space-x-2">
-              <img src={dollar} alt="" className="h-10 w-10" />
-              <div className="text-black text-2xl">{coinValue}</div>
-            </div>
-          </div>
         </div>
 
-        <div className="relative w-full h-full flex items-center justify-center">
-          <div className="absolute left-0 w-full   h-[70%] rotate-12 bg-no-repeat bg-gradient-to-l from-transparent to-golden filter opacity-70 blur-2xl"></div>
-          <div className="absolute right-0 w-full   h-[70%] rotate-12 bg-no-repeat bg-gradient-to-l from-golden to-transparent filter opacity-70 blur-2xl"></div>
-
+        {/* daily reward */}
+        <div className="flex justify-between mx-4">
           <div
-            className={` coin-container flex  justify-center   transform w-80`}
+            onClick={() => navigate("/boost")}
+            className="w-28 shadow-md  p-1 flex flex-col items-center border-2 rounded-xl border-[#F9C399] text-black"
           >
-            <img src={coin1} onClick={handleCardClick} className="w-[80%]" />
+            <img src={dailyreward} alt="" className="h-8 w-8" />
+            <div className="text-sm">Daily Reward</div>
           </div>
-        </div>
-
-        <div className=" mx-4">
-          <div className="flex  items-center justify-between mb-2">
-            <div className="flex  items-center space-x-2">
-              <div>
-                <img src={flash} className="h-8" alt="" />
-              </div>
-              <p className="text-xl text-black ">
-                <span className="text-2xl">{score}</span>/1500
-              </p>
-            </div>
-
-            {/* boost button  */}
-            <div className="rounded-lg flex justify-center  px-2 space-x-1 bg-[#F9C399] border-[#FA650F] border shadow-custom  shadow-[#FA650F]">
-              <div>
-                <img src={shuttle} className="h-10" alt="" />
-              </div>
-              <button
-                className=" text-black text-xl"
-                onClick={() => {
-                  navigate("/boost");
-                }}
-              >
-                Boost
-              </button>
-            </div>
-          </div>
-
-          {/* progres bar  */}
-          <div className="w-full border-orange-500 border-2  rounded-lg ">
-            <div className="h-4 bg-orange-500 rounded-lg">
-              <div
-                className="h-full bg-progress-bar rounded-lg"
-                style={{ width: `${(score / 1500) * 100}%` }}
-              ></div>
-            </div>
-          </div>
-        </div>
-        {showResetPopup && (
-          <div className="fixed inset-0  bg-opacity-50 flex items-center justify-center">
-            <div className=" backdrop-blur-md  bg-golden/10    border-2 border-golden p-8 rounded-lg m-16 shadow-lg text-white">
-              <h2 className="text-2xl font-bold mb-4 text-black">Wait!</h2>
-              <p className="mb-4  text-black">
-                Your score has reached 0. You can try again in Some Time
-              </p>
-              <button
-                className="bg-golden text-black px-4 py-2 rounded-full"
-                onClick={() => setShowResetPopup(false)}
-              >
-                OK
-              </button>
-            </div>
-          </div>
-        )}
-
-        {clicks.map((click) => (
           <div
-            key={click.id}
-            className="absolute text-5xl font-bold opacity-0 text-white pointer-events-none"
-            style={{
-              top: `${click.y - 42}px`,
-              left: `${click.x - 28}px`,
-              animation: `float 1s ease-out`,
-            }}
-            onAnimationEnd={() => handleAnimationEnd(click.id)}
+            onClick={() => navigate("/dailyrewards")}
+            className="w-28 shadow-md  p-1 flex flex-col items-center border-2 rounded-xl border-[#F9C399] text-black"
           >
-            +{tapPerCoin}
+            <img src={dollar} alt="" className="h-8 w-8" />
+            <div className="text-sm">Daily Coins</div>
           </div>
-        ))}
+          <div
+            onClick={() => navigate("/tasks")}
+            className="w-28 shadow-md  p-1 flex flex-col items-center border-2 rounded-xl border-[#F9C399] text-black"
+          >
+            <img src={dailytask} alt="" className="h-8" />
+            <div className="text-sm"> Daily Task</div>
+          </div>
+        </div>
 
-        <div className="flex justify-center items-center">
-          <BottomNavBar />
+        {/* balance  */}
+        <div className="flex items-center justify-center">
+          <div className="flex items-center space-x-2">
+            <img src={dollar} alt="" className="h-10 w-10" />
+            <div className="text-black text-2xl">{coinValue}</div>
+          </div>
         </div>
       </div>
-      <BackButton onClick={() => navigate("/games")} />;
-    </WebAppProvider>
+
+      <div className="relative w-full h-full flex items-center justify-center">
+        <div className="absolute left-0 w-full   h-[70%] rotate-12 bg-no-repeat bg-gradient-to-l from-transparent to-golden filter opacity-70 blur-2xl"></div>
+        <div className="absolute right-0 w-full   h-[70%] rotate-12 bg-no-repeat bg-gradient-to-l from-golden to-transparent filter opacity-70 blur-2xl"></div>
+
+        <div
+          className={` coin-container flex  justify-center   transform w-80`}
+        >
+          <img src={coin1} onClick={handleCardClick} className="w-[80%]" />
+        </div>
+      </div>
+
+      <div className=" mx-4">
+        <div className="flex  items-center justify-between mb-2">
+          <div className="flex  items-center space-x-2">
+            <div>
+              <img src={flash} className="h-8" alt="" />
+            </div>
+            <p className="text-xl text-black ">
+              <span className="text-2xl">{score}</span>/1500
+            </p>
+          </div>
+
+          {/* boost button  */}
+          <div className="rounded-lg flex justify-center  px-2 space-x-1 bg-[#F9C399] border-[#FA650F] border shadow-custom  shadow-[#FA650F]">
+            <div>
+              <img src={shuttle} className="h-10" alt="" />
+            </div>
+            <button
+              className=" text-black text-xl"
+              onClick={() => {
+                navigate("/boost");
+              }}
+            >
+              Boost
+            </button>
+          </div>
+        </div>
+
+        {/* progres bar  */}
+        <div className="w-full border-orange-500 border-2  rounded-lg ">
+          <div className="h-4 bg-orange-500 rounded-lg">
+            <div
+              className="h-full bg-progress-bar rounded-lg"
+              style={{ width: `${(score / 1500) * 100}%` }}
+            ></div>
+          </div>
+        </div>
+      </div>
+      {showResetPopup && (
+        <div className="fixed inset-0  bg-opacity-50 flex items-center justify-center">
+          <div className=" backdrop-blur-md  bg-golden/10    border-2 border-golden p-8 rounded-lg m-16 shadow-lg text-white">
+            <h2 className="text-2xl font-bold mb-4 text-black">Wait!</h2>
+            <p className="mb-4  text-black">
+              Your score has reached 0. You can try again in Some Time
+            </p>
+            <button
+              className="bg-golden text-black px-4 py-2 rounded-full"
+              onClick={() => setShowResetPopup(false)}
+            >
+              OK
+            </button>
+          </div>
+        </div>
+      )}
+
+      {clicks.map((click) => (
+        <div
+          key={click.id}
+          className="absolute text-5xl font-bold opacity-0 text-white pointer-events-none"
+          style={{
+            top: `${click.y - 42}px`,
+            left: `${click.x - 28}px`,
+            animation: `float 1s ease-out`,
+          }}
+          onAnimationEnd={() => handleAnimationEnd(click.id)}
+        >
+          +{tapPerCoin}
+        </div>
+      ))}
+
+      <div className="flex justify-center items-center">
+        <BottomNavBar />
+      </div>
+    </div>
+    // <BackButton onClick={() => navigate("/games")} />;
+    // </WebAppProvider>
   );
 };
 

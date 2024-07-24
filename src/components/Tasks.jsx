@@ -4,6 +4,7 @@ import boy from "../assets/boy.png";
 import { UserDataContext } from "../Utils/userDataContext";
 import { firestore } from "../Utils/remote";
 import { CoinContext } from "../Utils/coinContext";
+import { BackButton, WebAppProvider } from "@vkruglikov/react-telegram-web-app";
 import Loader from "./Loader"; // Import the Loader component
 import BottomNavBar from "./BottomNavBar";
 import youtube from "../../src/assets/youtube.png";
@@ -32,6 +33,7 @@ import socialYoutube from "../../src/assets/socialYoutube.png";
 import socialTelegram from "../../src/assets/telegramSocial.png";
 import socialTwitter from "../../src/assets/twitterSocial.png";
 import socialInstagram from "../../src/assets/instagramSocial.png";
+import { useNavigate } from "react-router-dom";
 
 function Tasks() {
   const [loading, setLoading] = useState(true); // Add loading state
@@ -43,6 +45,8 @@ function Tasks() {
   // state for socails friends
   const [socialModal, setSoialModal] = useState(false);
   const [socialModalData, setSoialModalData] = useState({});
+
+  const navigate = useNavigate ()
 
   // state for levels
   const [levels, setLevels] = useState([]);
@@ -374,6 +378,7 @@ function Tasks() {
   const d = localStorage.setItem("level", 1);
   const a = localStorage.getItem("level");
   return (
+    <WebAppProvider>
     <div className="py-4 overflow-hidden space-y-2">
       <div className=" mx-4">
         {/* Socials  */}
@@ -596,8 +601,8 @@ function Tasks() {
             {level &&
               levels?.slice(showLevel, showLevel + 2)?.map((le, index) => (
                 <>
-                  {!userData.LevelClaimed[index] &&
-                    !userData?.LevelClaimed[index] && (
+                  {index>=0 && userData.LevelClaimed.length>0 && !userData.LevelClaimed[index]
+                     && (
                       <div
                         key={index}
                         className="space-y-2 border border-orange-400 shadow-md p-2 rounded-lg"
@@ -749,6 +754,9 @@ function Tasks() {
         <BottomNavBar />
       </div>
     </div>
+    <BackButton onClick={() => navigate("/games")} />;
+    </WebAppProvider>
+
   );
 }
 

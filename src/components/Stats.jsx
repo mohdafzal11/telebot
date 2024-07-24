@@ -5,15 +5,17 @@ import { UserDataContext } from "../Utils/userDataContext";
 import dollar from "../../src/assets/dollar.png";
 import BottomNavBar from "./BottomNavBar";
 import Loader from "./Loader";
+import { BackButton, WebAppProvider } from "@vkruglikov/react-telegram-web-app";
+import { useNavigate } from "react-router-dom";
 
 const TapSwapStats = () => {
   const { coinValue } = useContext(CoinContext);
   const { fetchTotalUsers, fetchTotalBalance, updateTotalBalanceDistributed } =
     useContext(UserDataContext);
 
-  const [totalDistributedBalance, setTotalBalanceDistributedBalance] =
-    useState(1000000);
-
+  const [totalDistributedBalance, setTotalBalanceDistributedBalance] =useState(1000000);
+  
+    const navigate=useNavigate()
   const [totalUsers, setTotalUsers] = useState(1000);
   const [onlineUsers, setOnlineUsers] = useState(500);
   const [gamesPlayed, setTotalGamesPlayed] = useState(100000);
