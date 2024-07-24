@@ -601,7 +601,7 @@ function Tasks() {
             {level &&
               levels?.slice(showLevel, showLevel + 2)?.map((le, index) => (
                 <>
-                  {index>=0 && userData.LevelClaimed.length>0 && !userData.LevelClaimed[index]
+                  {index>=0 && userData?.LevelClaimed?.length>0 && !userData.LevelClaimed[index]
                      && (
                       <div
                         key={index}
