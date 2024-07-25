@@ -184,14 +184,14 @@ const Referral = () => {
         </div>
 
 
-        {[1,2,3,4].map((user, index) => (
+        {userData.invitefriendsclaim.map((user, index) => (
             <div className="flex justify-between px-4 items-center gap-6  bg-[#FDE5C1]  rounded-lg shadow-md border border-orange-400 my-2 py-2 mx-4">
               <div className="flex space-x-4">
                 <div className="p-2  rounded-full bg-[#FA891B]">
                   <img className=" p-1  h-8" src={profile2} alt="profile" />
                 </div>
                 <div className="text-black flex items-center">
-                  <div>
+                  <div className="w-20 truncate">
                       {userData.chatId}
                   </div>
                 
