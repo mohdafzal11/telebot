@@ -59,7 +59,7 @@ const AuthPage = () => {
             startDay20x: new Date().getDate(),
             nextDay20x: new Date().getDate() + 1,
             DailyReward: [
-              true,
+              false,
               false,
               false,
               false,
