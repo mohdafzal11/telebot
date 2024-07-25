@@ -3,15 +3,27 @@ import 'firebase/compat/auth';
 import 'firebase/compat/firestore';
 
 // Initialize Firebase
+// const firebaseConfig = {
+//   apiKey: "AIzaSyBCZpt_ChtFUCu8Lx5WfSscj0kgSUT8sGE",
+//   authDomain: "hodlswap.firebaseapp.com",
+//   projectId: "hodlswap",
+//   storageBucket: "hodlswap.appspot.com",
+//   messagingSenderId: "1019700479813",
+//   appId: "1:1019700479813:web:d70b177b0134dddb11a02c",
+//   measurementId: "G-RRY5P9D649"
+// };
+
+
 const firebaseConfig = {
-  apiKey: "AIzaSyBCZpt_ChtFUCu8Lx5WfSscj0kgSUT8sGE",
-  authDomain: "hodlswap.firebaseapp.com",
-  projectId: "hodlswap",
-  storageBucket: "hodlswap.appspot.com",
-  messagingSenderId: "1019700479813",
-  appId: "1:1019700479813:web:d70b177b0134dddb11a02c",
-  measurementId: "G-RRY5P9D649"
+  apiKey: "AIzaSyAnV4Bix1sQk0L0LhVI4MLcPvCTn6-5yM8",
+  authDomain: "telebot-b79e7.firebaseapp.com",
+  projectId: "telebot-b79e7",
+  storageBucket: "telebot-b79e7.appspot.com",
+  messagingSenderId: "285137909737",
+  appId: "1:285137909737:web:3a7f718d0f7b8836073d78",
+  measurementId: "G-G0BN28W6HF"
 };
+
 
 firebase.initializeApp(firebaseConfig);
 

@@ -34,6 +34,8 @@ import socialTelegram from "../../src/assets/telegramSocial.png";
 import socialTwitter from "../../src/assets/twitterSocial.png";
 import socialInstagram from "../../src/assets/instagramSocial.png";
 import { useNavigate } from "react-router-dom";
+import levelCircle from "../../src/assets/level-circel.png";
+import star from "../../src/assets/star.png"
 
 function Tasks() {
   const [loading, setLoading] = useState(true); // Add loading state
@@ -46,7 +48,7 @@ function Tasks() {
   const [socialModal, setSoialModal] = useState(false);
   const [socialModalData, setSoialModalData] = useState({});
 
-  const navigate = useNavigate ()
+  const navigate = useNavigate();
 
   // state for levels
   const [levels, setLevels] = useState([]);
@@ -375,388 +377,439 @@ function Tasks() {
     setShowLevel(showLevel + 1);
   };
 
-  const d = localStorage.setItem("level", 1);
-  const a = localStorage.getItem("level");
+  
   return (
     <WebAppProvider>
-    <div className="py-4 overflow-hidden space-y-2">
-      <div className=" mx-4">
-        {/* Socials  */}
-        {(!userData?.joinYoutube ||
-          !userData?.joinTelegram ||
-          !userData?.joinInstagram ||
-          !userData?.joinTwitter) && (
-          <div className=" space-y-2">
-            <h1 className="text-center text-2xl font-bold">Join Our Socials</h1>
+      <div className="py-4 overflow-hidden space-y-2">
+        <div className=" mx-4">
+          {/* Socials  */}
+          {(!userData?.joinYoutube ||
+            !userData?.joinTelegram ||
+            !userData?.joinInstagram ||
+            !userData?.joinTwitter) && (
+            <div className=" space-y-2">
+              <h1 className="text-center text-2xl font-bold">
+                Join Our Socials
+              </h1>
 
-            {!userData.joinYoutube && (
-              <div className="flex justify-between items-center border border-orange-400 shadow-md px-2 py-1 rounded-lg">
-                <div className="flex space-x-6 items-center">
-                  <div>
-                    <img src={youtube} alt="" />
-                  </div>
-                  <div>
-                    <div className="text-base font-bold">
-                      Join Youtube Channel
+              {!userData.joinYoutube && (
+                <div className="flex justify-between items-center border border-orange-400 shadow-md px-2 py-1 rounded-lg">
+                  <div className="flex space-x-6 items-center">
+                    <div>
+                      <img src={youtube} alt="" />
                     </div>
-                    <div className="flex  items-center space-x-1">
-                      <div>
-                        <img src={dollar} className="h-5" alt="" />
+                    <div>
+                      <div className="text-base font-bold">
+                        Join Youtube Channel
                       </div>
-                      <p className="font-bold text-sm">100,000 Coins</p>
+                      <div className="flex  items-center space-x-1">
+                        <div>
+                          <img src={dollar} className="h-5" alt="" />
+                        </div>
+                        <p className="font-bold text-sm">100,000 Coins</p>
+                      </div>
                     </div>
                   </div>
-                </div>
 
-                <div className="flex items-center">
-                  {!socialModal ? (
-                    <button disabled={userData.joinYoutube}>
+                  <div className="flex items-center">
+                    {!socialModal ? (
+                      <button disabled={userData.joinYoutube}>
+                        <svg
+                          className="h-6"
+                          disabled={userData.joinYoutube}
+                          onClick={() => {
+                            setSoialModal(!socialModal);
+                            SocialMediaHandler("youtube");
+                          }}
+                          xmlns="http://www.w3.org/2000/svg"
+                          viewBox="0 0 320 512"
+                        >
+                          <path d="M310.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-192 192c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L242.7 256 73.4 86.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l192 192z" />
+                        </svg>
+                      </button>
+                    ) : (
                       <svg
                         className="h-6"
                         disabled={userData.joinYoutube}
                         onClick={() => {
                           setSoialModal(!socialModal);
-                          SocialMediaHandler("youtube");
                         }}
                         xmlns="http://www.w3.org/2000/svg"
-                        viewBox="0 0 320 512"
+                        viewBox="0 0 512 512"
                       >
-                        <path d="M310.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-192 192c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L242.7 256 73.4 86.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l192 192z" />
+                        <path d="M233.4 406.6c12.5 12.5 32.8 12.5 45.3 0l192-192c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L256 338.7 86.6 169.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l192 192z" />
                       </svg>
-                    </button>
-                  ) : (
-                    <svg
-                      className="h-6"
-                      disabled={userData.joinYoutube}
-                      onClick={() => {
-                        setSoialModal(!socialModal);
-                      }}
-                      xmlns="http://www.w3.org/2000/svg"
-                      viewBox="0 0 512 512"
-                    >
-                      <path d="M233.4 406.6c12.5 12.5 32.8 12.5 45.3 0l192-192c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L256 338.7 86.6 169.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l192 192z" />
-                    </svg>
-                  )}
-                </div>
-              </div>
-            )}
-
-            {!userData.joinTelegram && (
-              <div className="flex justify-between items-center border border-orange-400 shadow-md px-2 py-1 rounded-lg">
-                <div className="flex space-x-6 items-center">
-                  <div>
-                    <img src={telegram} alt="" />
+                    )}
                   </div>
-                  <div>
-                    <div className="text-base font-bold">
-                      Join Telegram Channel
+                </div>
+              )}
+
+              {!userData.joinTelegram && (
+                <div className="flex justify-between items-center border border-orange-400 shadow-md px-2 py-1 rounded-lg">
+                  <div className="flex space-x-6 items-center">
+                    <div>
+                      <img src={telegram} alt="" />
                     </div>
-                    <div className="flex  items-center space-x-1">
-                      <div>
-                        <img src={dollar} className="h-5" alt="" />
+                    <div>
+                      <div className="text-base font-bold">
+                        Join Telegram Channel
                       </div>
-                      <p className="font-bold text-sm">100,00 Coins</p>
+                      <div className="flex  items-center space-x-1">
+                        <div>
+                          <img src={dollar} className="h-5" alt="" />
+                        </div>
+                        <p className="font-bold text-sm">100,00 Coins</p>
+                      </div>
                     </div>
                   </div>
-                </div>
 
-                <div className="flex items-center">
-                  {!socialModal ? (
-                    <button disabled={userData.joinTelegram}>
+                  <div className="flex items-center">
+                    {!socialModal ? (
+                      <button disabled={userData.joinTelegram}>
+                        <svg
+                          className="h-6"
+                          disabled={!userData.joinTelegram}
+                          onClick={() => {
+                            setSoialModal(!socialModal);
+                            SocialMediaHandler("telegram");
+                          }}
+                          xmlns="http://www.w3.org/2000/svg"
+                          viewBox="0 0 320 512"
+                        >
+                          <path d="M310.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-192 192c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L242.7 256 73.4 86.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l192 192z" />
+                        </svg>
+                      </button>
+                    ) : (
                       <svg
                         className="h-6"
-                        disabled={!userData.joinTelegram}
                         onClick={() => {
                           setSoialModal(!socialModal);
-                          SocialMediaHandler("telegram");
                         }}
                         xmlns="http://www.w3.org/2000/svg"
-                        viewBox="0 0 320 512"
+                        viewBox="0 0 512 512"
                       >
-                        <path d="M310.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-192 192c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L242.7 256 73.4 86.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l192 192z" />
+                        <path d="M233.4 406.6c12.5 12.5 32.8 12.5 45.3 0l192-192c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L256 338.7 86.6 169.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l192 192z" />
                       </svg>
-                    </button>
-                  ) : (
-                    <svg
-                      className="h-6"
-                      onClick={() => {
-                        setSoialModal(!socialModal);
-                      }}
-                      xmlns="http://www.w3.org/2000/svg"
-                      viewBox="0 0 512 512"
-                    >
-                      <path d="M233.4 406.6c12.5 12.5 32.8 12.5 45.3 0l192-192c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L256 338.7 86.6 169.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l192 192z" />
-                    </svg>
-                  )}
-                </div>
-              </div>
-            )}
-
-            {!userData.joinInstagram && (
-              <div className="flex justify-between items-center border border-orange-400 shadow-md px-2 py-1 rounded-lg">
-                <div className="flex space-x-6 items-center">
-                  <div>
-                    <img src={instagram} alt="" />
+                    )}
                   </div>
-                  <div>
-                    <div className="text-base font-bold">
-                      Join Instagram Channel
+                </div>
+              )}
+
+              {!userData.joinInstagram && (
+                <div className="flex justify-between items-center border border-orange-400 shadow-md px-2 py-1 rounded-lg">
+                  <div className="flex space-x-6 items-center">
+                    <div>
+                      <img src={instagram} alt="" />
                     </div>
-                    <div className="flex  items-center space-x-1">
-                      <div>
-                        <img src={dollar} className="h-5" alt="" />
+                    <div>
+                      <div className="text-base font-bold">
+                        Join Instagram Channel
                       </div>
-                      <p className="font-bold text-sm">100,000 Coins</p>
+                      <div className="flex  items-center space-x-1">
+                        <div>
+                          <img src={dollar} className="h-5" alt="" />
+                        </div>
+                        <p className="font-bold text-sm">100,000 Coins</p>
+                      </div>
                     </div>
                   </div>
-                </div>
 
-                <div className="flex items-center">
-                  {!socialModal ? (
-                    <button disabled={userData.joinInstagram}>
+                  <div className="flex items-center">
+                    {!socialModal ? (
+                      <button disabled={userData.joinInstagram}>
+                        <svg
+                          className="h-6"
+                          disabled={!userData.joinInstagram}
+                          onClick={() => {
+                            setSoialModal(!socialModal);
+                            SocialMediaHandler("instagram");
+                          }}
+                          xmlns="http://www.w3.org/2000/svg"
+                          viewBox="0 0 320 512"
+                        >
+                          <path d="M310.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-192 192c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L242.7 256 73.4 86.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l192 192z" />
+                        </svg>
+                      </button>
+                    ) : (
                       <svg
                         className="h-6"
-                        disabled={!userData.joinInstagram}
                         onClick={() => {
                           setSoialModal(!socialModal);
-                          SocialMediaHandler("instagram");
                         }}
                         xmlns="http://www.w3.org/2000/svg"
-                        viewBox="0 0 320 512"
+                        viewBox="0 0 512 512"
                       >
-                        <path d="M310.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-192 192c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L242.7 256 73.4 86.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l192 192z" />
+                        <path d="M233.4 406.6c12.5 12.5 32.8 12.5 45.3 0l192-192c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L256 338.7 86.6 169.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l192 192z" />
                       </svg>
-                    </button>
-                  ) : (
-                    <svg
-                      className="h-6"
-                      onClick={() => {
-                        setSoialModal(!socialModal);
-                      }}
-                      xmlns="http://www.w3.org/2000/svg"
-                      viewBox="0 0 512 512"
-                    >
-                      <path d="M233.4 406.6c12.5 12.5 32.8 12.5 45.3 0l192-192c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L256 338.7 86.6 169.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l192 192z" />
-                    </svg>
-                  )}
-                </div>
-              </div>
-            )}
-
-            {!userData.joinTwitter && (
-              <div className="flex justify-between items-center border border-orange-400 shadow-md px-2 py-1 rounded-lg">
-                <div className="flex space-x-6 items-center">
-                  <div>
-                    <img src={twitter} alt="" />
+                    )}
                   </div>
-                  <div>
-                    <div className="text-base font-bold">Join X Channel</div>
-                    <div className="flex  items-center space-x-1">
-                      <div>
-                        <img src={dollar} className="h-5" alt="" />
+                </div>
+              )}
+
+              {!userData.joinTwitter && (
+                <div className="flex justify-between items-center border border-orange-400 shadow-md px-2 py-1 rounded-lg">
+                  <div className="flex space-x-6 items-center">
+                    <div>
+                      <img src={twitter} alt="" />
+                    </div>
+                    <div>
+                      <div className="text-base font-bold">Join X Channel</div>
+                      <div className="flex  items-center space-x-1">
+                        <div>
+                          <img src={dollar} className="h-5" alt="" />
+                        </div>
+                        <p className="font-bold text-sm">100,000 Coins</p>
                       </div>
-                      <p className="font-bold text-sm">100,000 Coins</p>
                     </div>
                   </div>
-                </div>
 
-                <div className="flex items-center">
-                  {!socialModal ? (
-                    <button disabled={userData.joinTwitter}>
+                  <div className="flex items-center">
+                    {!socialModal ? (
+                      <button disabled={userData.joinTwitter}>
+                        <svg
+                          className="h-6"
+                          disabled={!userData.joinTwitter}
+                          onClick={() => {
+                            setSoialModal(!socialModal);
+                            SocialMediaHandler("twitter");
+                          }}
+                          xmlns="http://www.w3.org/2000/svg"
+                          viewBox="0 0 320 512"
+                        >
+                          <path d="M310.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-192 192c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L242.7 256 73.4 86.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l192 192z" />
+                        </svg>
+                      </button>
+                    ) : (
                       <svg
                         className="h-6"
-                        disabled={!userData.joinTwitter}
                         onClick={() => {
                           setSoialModal(!socialModal);
-                          SocialMediaHandler("twitter");
                         }}
                         xmlns="http://www.w3.org/2000/svg"
-                        viewBox="0 0 320 512"
+                        viewBox="0 0 512 512"
                       >
-                        <path d="M310.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-192 192c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L242.7 256 73.4 86.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l192 192z" />
+                        <path d="M233.4 406.6c12.5 12.5 32.8 12.5 45.3 0l192-192c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L256 338.7 86.6 169.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l192 192z" />
                       </svg>
-                    </button>
-                  ) : (
-                    <svg
-                      className="h-6"
-                      onClick={() => {
-                        setSoialModal(!socialModal);
-                      }}
-                      xmlns="http://www.w3.org/2000/svg"
-                      viewBox="0 0 512 512"
-                    >
-                      <path d="M233.4 406.6c12.5 12.5 32.8 12.5 45.3 0l192-192c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L256 338.7 86.6 169.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l192 192z" />
-                    </svg>
-                  )}
+                    )}
+                  </div>
+                </div>
+              )}
+            </div>
+          )}
+
+          {/* levels  */}
+          <div>
+            <div className="text-center text-2xl font-bold mt-4">Levels</div>
+            <div className="space-y-2 h-[140px] overflow-y-auto px-2 overflow-y-hidden">
+              {level &&
+                levels?.map((le, index) => (
+                  <>
+                    {index >= 0 &&
+                      userData?.LevelClaimed?.length > 0 &&
+                      !userData.LevelClaimed[index] && (
+                        <div
+                          key={index}
+                          className="space-y-2 border border-orange-400 shadow-md p-2 rounded-lg"
+                        >
+                          <div className="flex justify-between items-center">
+                            <div className="flex">
+                              <div className="w-12">
+                                <img
+                                  src={imageData[index]?.image}
+                                  alt=""
+                                  className="h-10"
+                                />
+                              </div>
+                              <div>
+                                <div className="text-base font-bold">
+                                  Level - {index + 1}
+                                </div>
+                                <div className="flex  items-center space-x-1">
+                                  <div>
+                                    <img src={dollar} className="h-5" alt="" />
+                                  </div>
+                                  <p className="font-bold text-sm">
+                                    100,000 Coins
+                                  </p>
+                                </div>
+                              </div>
+                            </div>
+                            <div>
+                              <button
+                                disabled={userData.LevelClaimed[index]}
+                                onClick={() => {
+                                  LevelHandler(index);
+                                  setLevelModal(true);
+                                }}
+                              >
+                                <svg
+                                  className="h-6"
+                                  onClick={() => {}}
+                                  xmlns="http://www.w3.org/2000/svg"
+                                  viewBox="0 0 320 512"
+                                >
+                                  <path d="M310.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-192 192c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L242.7 256 73.4 86.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l192 192z" />
+                                </svg>
+                              </button>
+                            </div>
+                          </div>
+                        </div>
+                      )}
+                  </>
+                ))}
+            </div>
+          </div>
+        </div>
+
+        {socialModal && (
+          <div className="fixed z-40 inset-0 flex items-end justify-center bg-custom-gradient-tapgame transition-opacity duration-300">
+            <div
+              className={`relative bg-custom-gradient-tapgame rounded-t-lg w-screen shadow-lg h-screen transition-transform duration-300`}
+            >
+              <div className="flex flex-col items-center justify-center mx-16 space-y-3 h-[80%]">
+                <div>
+                  <img src={socialModalData.image} className="h-40" alt="" />
+                </div>
+                <div className="text-center text-2xl font-bold">
+                  {socialModalData?.heading}
+                </div>
+                <div className="text-center">
+                  {socialModalData?.description}
+                </div>
+                <div className="flex space-x-2 font-bold items-center">
+                  <img src={dollar} className="h-8" alt="" />
+                  <h1 className="text-xl">+100,000</h1>
+                </div>
+
+                <div>
+                  <button className="text-white font-bold text-xl bg-orange-400 px-4 py-1 border-white border-2 shadow-md rounded-sm">
+                    {socialModalData?.button1}
+                  </button>
+                </div>
+               
+                <div>
+                  <button
+                    onClick={() => {
+                      SocialCheckHandler();
+                    }}
+                    className="text-white font-bold text-xl bg-orange-400 px-28 py-2 border-white border-2 shadow-md rounded-sm"
+                  >
+                    {socialModalData?.button2}
+                  </button>
                 </div>
               </div>
-            )}
+            </div>
           </div>
         )}
 
-        {/* levels  */}
-        <div>
-          <div className="text-center text-2xl font-bold mt-4">Levels</div>
-          <div className="space-y-2 h-80 overflow-y-auto px-2">
-            {level &&
-              levels?.slice(showLevel, showLevel + 2)?.map((le, index) => (
-                <>
-                  {index>=0 && userData?.LevelClaimed?.length>0 && !userData.LevelClaimed[index]
-                     && (
-                      <div
-                        key={index}
-                        className="space-y-2 border border-orange-400 shadow-md p-2 rounded-lg"
-                      >
-                        <div className="flex justify-between items-center">
-                          <div className="flex">
-                            <div className="w-12">
-                              <img
-                                src={imageData[index]?.image}
-                                alt=""
-                                className="h-10"
-                              />
-                            </div>
-                            <div>
-                              <div className="text-base font-bold">
-                                Level - {index + 1}
-                              </div>
-                              <div className="flex  items-center space-x-1">
-                                <div>
-                                  <img src={dollar} className="h-5" alt="" />
-                                </div>
-                                <p className="font-bold text-sm">
-                                  100,000 Coins
-                                </p>
-                              </div>
-                            </div>
-                          </div>
-                          <div>
-                            <button
-                              disabled={userData.LevelClaimed[index]}
-                              onClick={() => {
-                                LevelHandler(index);
-                                setLevelModal(true);
-                              }}
-                            >
-                              <svg
-                                className="h-6"
-                                onClick={() => {}}
-                                xmlns="http://www.w3.org/2000/svg"
-                                viewBox="0 0 320 512"
-                              >
-                                <path d="M310.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-192 192c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L242.7 256 73.4 86.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l192 192z" />
-                              </svg>
-                            </button>
-                          </div>
-                        </div>
-                      </div>
-                    )}
-                </>
-              ))}
-          </div>
-        </div>
-      </div>
+        {levelModal && (
+          <div className="fixed z-40 inset-0 flex items-end justify-center bg-custom-gradient-tapgame transition-opacity duration-300">
+            <div
+              className={`relative bg-custom-gradient-tapgame rounded-t-lg w-screen shadow-lg h-screen transition-transform duration-300`}
+            >
+              <div className="flex flex-col items-center justify-center  space-y-3 h-[80%]">
+               
 
-      {socialModal && (
-        <div className="fixed z-40 inset-0 flex items-end justify-center bg-custom-gradient-tapgame transition-opacity duration-300">
-          <div
-            className={`relative bg-custom-gradient-tapgame rounded-t-lg w-screen shadow-lg h-screen transition-transform duration-300`}
-          >
-            <div className="flex flex-col items-center justify-center mx-16 space-y-3 h-[80%]">
-              <div>
-                <img src={socialModalData.image} className="h-40" alt="" />
-              </div>
-              <div className="text-center text-2xl font-bold">
-                {socialModalData?.heading}
-              </div>
-              <div className="text-center">{socialModalData?.description}</div>
-              <div className="flex space-x-2 font-bold items-center">
-                <img src={dollar} className="h-8" alt="" />
-                <h1 className="text-xl">+100,000</h1>
-              </div>
-
-              <div>
-                <button className="text-white font-bold text-xl bg-orange-400 px-4 py-1 border-white border-2 shadow-md rounded-sm">
-                  {socialModalData?.button1}
-                </button>
-              </div>
-
-              <div>
-                <button
-                  onClick={() => {
-                    SocialCheckHandler();
-                  }}
-                  className="text-white font-bold text-xl bg-orange-400 px-28 py-2 border-white border-2 shadow-md rounded-sm"
-                >
-                  {socialModalData?.button2}
-                </button>
-              </div>
-            </div>
-          </div>
-        </div>
-      )}
-
-      {levelModal && (
-        <div className="fixed z-40 inset-0 flex items-end justify-center bg-custom-gradient-tapgame transition-opacity duration-300">
-          <div
-            className={`relative bg-custom-gradient-tapgame rounded-t-lg w-screen shadow-lg h-screen transition-transform duration-300`}
-          >
-            <div className="flex flex-col items-center justify-center mx-16 space-y-3 h-[80%]">
-              <div>
-                <img
-                  src={imageData[levelModalData?.index]?.image}
-                  className="h-40"
-                  alt=""
-                />
-              </div>
-              <div className="text-center text-2xl font-bold">
-                Level - {levelModalData.index + 1}
-              </div>
-              <div className="flex space-x-2 font-bold items-center">
-                <img src={dollar} className="h-8" alt="" />
-                <h1 className="text-xl">+100,000</h1>
-              </div>
-
-              <div className="w-full border-orange-500 border-2  rounded-lg ">
-                <div className="h-4 bg-orange-500 rounded-lg">
+                <div className=" bg-level-gradient  w-[100vw] flex justify-center">
                   <div
-                    className="flex items-center h-full bg-progress-bar rounded-lg text-black"
-                    style={{
-                      width: `${
-                        (userData.maxCoin > levels[levelModalData.index].end
-                          ? 1
-                          : userData.maxCoin /
-                            levels[levelModalData.index]?.end) * 100
-                      }%`,
-                    }}
+                    className={`relative coin-container  transform mb-3`}
                   >
-                    {userData.maxCoin + "/" + levels[levelModalData.index]?.end}
+                    <img
+                      src={imageData[levelModalData?.index]?.image}
+                      className=""
+                    />
+                    <img
+                      src={levelCircle}
+                      alt=""
+                      className="absolute bottom-0  w-52"
+                    />
                   </div>
                 </div>
-              </div>
 
-              <div>
-                <button
-                  disabled={userData.maxCoin < levelModalData.end}
-                  onClick={() => {
-                    ClaimLevelHandler(levelModalData.index);
-                  }}
-                  className="text-white font-bold text-xl bg-orange-400 px-20 py-2 border-white border-2 shadow-md rounded-sm"
-                >
-                  Claim
-                </button>
+                <div className="flex w-[90Vw] justify-between items-center  text-black   shadow-md  px-2 border-orange-400 border rounded-xl py-1">
+                  <div className="flex  w-full justify-between items-center space-x-2">
+                    <div className="flex justify-center items-center">
+                      <div className="w-20">
+                        Level - {levelModalData.index + 1}
+                      </div>
+                      <div className="w-[60vw] ">
+                        <div className="h-4 bg-orange-500 rounded-lg bg-progress-bar">
+                          <div
+                            className="h-full bg-[#FDCD45] rounded-lg bg-progress-bar"
+                            style={{
+                              width: `${
+                                (userData.maxCoin >
+                                levels[levelModalData.index].end
+                                  ? 1
+                                  : userData.maxCoin /
+                                    levels[levelModalData.index]?.end) * 100
+                              }%`,
+                            }}
+                          ></div>
+                        </div>
+                      </div>
+                      <div
+                        onClick={() => {
+                          navigate("/levels");
+                        }}
+                      >
+                        <svg
+                          className="h-3"
+                          xmlns="http://www.w3.org/2000/svg"
+                          viewBox="0 0 320 512"
+                        >
+                          <path d="M310.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-192 192c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L242.7 256 73.4 86.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l192 192z" />
+                        </svg>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div>
+                  <h1 className="text-xl font-bold">
+                    you will get this reward...
+                  </h1>
+                </div>
+                 
+                <div>
+                  <button
+                    disabled={userData.maxCoin < levelModalData.end}
+                    onClick={() => {
+                      // ClaimLevelHandler(levelModalData.index);
+                    }}
+                    className="flex justify-center items-center text-white font-bold text-xl bg-orange-400 px-2 py-0.5 border-white border-2 shadow-md rounded-sm"
+                  >
+                    <div className="flex justify-center items-center"><img src={star} alt="" /></div>
+                    <span>Reward</span>
+                  </button>
+                </div>
+
+                <div className="flex justify-center items-center space-x-2">
+                  <div><img src={dollar} alt="" className="h-8"/></div>
+                  <div className="text-2xl font-bold"> 100,000</div>
+                </div>
+
+                <div>
+                  <button
+                    disabled={userData.maxCoin < levelModalData.end}
+                    onClick={() => {
+                      ClaimLevelHandler(levelModalData.index);
+                    }}
+                    className="text-white font-bold text-xl bg-orange-400 px-20 py-2 border-white border-2 shadow-md rounded-sm"
+                  >
+                    Claim
+                  </button>
+                </div>
               </div>
             </div>
           </div>
+        )}
+        <div className="flex justify-center items-center">
+          <BottomNavBar />
         </div>
-      )}
-      <div className="flex justify-center items-center">
-        <BottomNavBar />
       </div>
-    </div>
-    <BackButton onClick={() => navigate("/games")} />;
+      <BackButton onClick={() => navigate("/games")} />;
     </WebAppProvider>
-
   );
 }
 

@@ -506,6 +506,9 @@ export const UserDataProvider = ({ children }) => {
   }
 
   const fetchUsers = async (specificUserId, minMaxCoin, maxMaxCoin) => {
+
+
+    console.log(specificUserId, minMaxCoin , maxMaxCoin)
     try {
       const usersRef = firestore.collection("users");
 
@@ -514,7 +517,7 @@ export const UserDataProvider = ({ children }) => {
         .where("maxCoin", ">=", minMaxCoin)
         .where("maxCoin", "<=", maxMaxCoin)
         .orderBy("maxCoin", "desc")
-        .limit(3)
+        .limit(4)
         .get();
       let rangeUsers = rangeUsersSnapshot.docs.map((doc) => ({
         id: doc.id,
@@ -539,18 +542,18 @@ export const UserDataProvider = ({ children }) => {
       }
 
       // Fetch more users if we need to ensure we have four users total
-      if (rangeUsers.length < 4) {
-        const additionalUsersSnapshot = await usersRef
-          .where("maxCoin", ">=", minMaxCoin)
-          .where("maxCoin", "<=", maxMaxCoin)
-          .orderBy("maxCoin", "desc")
-          .offset(3)
-          .limit(1)
-          .get();
-        additionalUsersSnapshot.forEach((doc) => {
-          rangeUsers.push({ id: doc.id, ...doc.data() });
-        });
-      }
+      // if (rangeUsers.length < 4) {
+      //   const additionalUsersSnapshot = await usersRef
+      //     .where("maxCoin", ">=", minMaxCoin)
+      //     .where("maxCoin", "<=", maxMaxCoin)
+      //     .orderBy("maxCoin", "desc")
+      //     .offset(3)
+      //     .limit(1)
+      //     .get();
+      //   additionalUsersSnapshot.forEach((doc) => {
+      //     rangeUsers.push({ id: doc.id, ...doc.data() });
+      //   });
+      // }
 
       setUsers(sortUsersByMaxCoin(rangeUsers.slice(0, 4))); // Ensure we have exactly four users
     } catch (error) {

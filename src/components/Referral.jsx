@@ -10,6 +10,11 @@ import dollar from "../../src/assets/dollar.png";
 import { BackButton, WebAppProvider } from "@vkruglikov/react-telegram-web-app";
 import { useNavigate } from "react-router-dom";
 
+import profile2 from "../../src/assets/profile-2.png";
+import rank1 from "../../src/assets/rankOneBadge.png";
+import rank2 from "../../src/assets/rankTwoBadge.png";
+import rank3 from "../../src/assets/rankThreeBadge.png";
+
 const Referral = () => {
   const [isLoading, setIsLoading] = useState(true);
   const level3Props = useSpring({
@@ -94,18 +99,119 @@ const Referral = () => {
     }
     return startNumber * Math.pow(commonRatio, n - 1);
   }
+  
+  console.log(userData)
+
+  const ranks = [rank1, rank2, rank3, ""];
 
   return (
     <WebAppProvider>
       <div className="mt-4 overflow-hidden rounded-lg chakra-petch-bold">
+
+      <div className="grid md:grid-cols-2 gap-4 mt-12">
+          <animated.div
+            style={level3Props}
+            className="text-black border-2  shadow-md mx-4 rounded-lg border-orange-400"
+          >
+            <div className="p-4  rounded-lg border  backdrop-blur-sm ">
+              <div className="flex justify-between items-center mb-2">
+                <h3 className="text-xl font-bold chakra-petch-bold ">
+                  My Invite Link
+                </h3>
+                <div className="rounded-full bg-orange-400">
+                  <div
+                    className="p-2"
+                    onClick={() => {
+                      window.open(
+                        `https://t.me/HodlSwap_bot?start=${localStorage.getItem(
+                          "chatId"
+                        )}`,
+                        "__blank"
+                      );
+                    }}
+                  >
+                    <img src={share} alt="" className="h-3" />
+                  </div>
+                </div>
+              </div>
+              <div className="flex justify-between items-center mt-4 space-x-2">
+                <div className="flex w-full ">
+                  <input
+                    type="text"
+                    value={referralLink}
+                    readOnly
+                    className="w-full  p-2 rounded-lg bg-white"
+                  />
+                </div>
+                <div>
+                  <button
+                    className="px-4 py-2  rounded-lg bg-orange-400 text-white"
+                    onClick={handleCopyReferralLink}
+                  >
+                    {copied ? "Copied" : "Copy"}
+                  </button>
+                </div>
+              </div>
+            </div>
+          </animated.div>
+          {/* <div className="mt-4 mx-4">
+            <h3 className="text-2xl font-bold chakra-petch-bold text-black">
+              My Referrals:
+            </h3>
+            <ul className="mt-4">
+              {userData.refs &&
+                (userData.refs || []).map((referral, index) => (
+                  <li
+                    key={index}
+                    className="flex items-center text-lg chakra-petch-regular text-black"
+                  >
+                    <FaRobot className="mr-2" /> User_{referral}
+                  </li>
+                ))}
+            </ul>
+            <div className="flex justify-center items-center mt-20">
+              {userData.refs && userData.refs.length <= 0 && (
+                <p className=" text-black">You don't have any referrals</p>
+              )}
+            </div>
+          </div> */}
+        </div>
+
         <div className="items-center mb-2 mt-6">
           <p className="text-3xl chakra-petch-bold text-black text-center mb-10">
             Referrals Count: {userData?.referralCount}
           </p>
         </div>
 
+
+        {[1,2,3,4].map((user, index) => (
+            <div className="flex justify-between px-4 items-center gap-6  bg-[#FDE5C1]  rounded-lg shadow-md border border-orange-400 my-2 py-2 mx-4">
+              <div className="flex space-x-4">
+                <div className="p-2  rounded-full bg-[#FA891B]">
+                  <img className=" p-1  h-8" src={profile2} alt="profile" />
+                </div>
+                <div className="text-black flex items-center">
+                  <div>
+                      {userData.chatId}
+                  </div>
+                
+                </div>
+              </div>
+              <div>
+                <img src={ranks[index]} alt="" />
+              </div>
+              <div className="w-28 flex bg-[#FA891B] items-center justify-center px-3 py-1 rounded-lg space-x-2">
+                <div className="">
+                  <img src={dollar} alt="" className="h-7" />
+                </div>
+                <div>20M</div>
+              </div>
+            </div>
+          ))}
+
+      
         {/* add friends  */}
-        <div className="space-y-2 mx-4 mb-4">
+        {/* <div className="space-y-2 mx-4 mb-4">
           <h1 className="text-center text-2xl font-bold">Invite Friends</h1>
 
           <div className="border border-orange-400 shadow-md px-2 py-1 rounded-lg">
@@ -273,77 +379,8 @@ const Referral = () => {
                 </div>
               </div>
             </div> */}
-          </div>
-        </div>
-
-        <div className="grid md:grid-cols-2 gap-4">
-          <animated.div
-            style={level3Props}
-            className="text-black border-2  shadow-md mx-4 rounded-lg border-orange-400"
-          >
-            <div className="p-4  rounded-lg border  backdrop-blur-sm ">
-              <div className="flex justify-between items-center mb-2">
-                <h3 className="text-xl font-bold chakra-petch-bold ">
-                  My Invite Link
-                </h3>
-                <div className="rounded-full bg-orange-400">
-                  <div
-                    className="p-2"
-                    onClick={() => {
-                      window.open(
-                        `https://t.me/HodlSwap_bot?start=${localStorage.getItem(
-                          "chatId"
-                        )}`,
-                        "__blank"
-                      );
-                    }}
-                  >
-                    <img src={share} alt="" className="h-3" />
-                  </div>
-                </div>
-              </div>
-              <div className="flex justify-between items-center mt-4 space-x-2">
-                <div className="flex w-full ">
-                  <input
-                    type="text"
-                    value={referralLink}
-                    readOnly
-                    className="w-full  p-2 rounded-lg bg-white"
-                  />
-                </div>
-                <div>
-                  <button
-                    className="px-4 py-2  rounded-lg bg-orange-400 text-white"
-                    onClick={handleCopyReferralLink}
-                  >
-                    {copied ? "Copied" : "Copy"}
-                  </button>
-                </div>
-              </div>
-            </div>
-          </animated.div>
-          <div className="mt-4 mx-4">
-            <h3 className="text-2xl font-bold chakra-petch-bold text-black">
-              My Referrals:
-            </h3>
-            <ul className="mt-4">
-              {userData.refs &&
-                (userData.refs || []).map((referral, index) => (
-                  <li
-                    key={index}
-                    className="flex items-center text-lg chakra-petch-regular text-black"
-                  >
-                    <FaRobot className="mr-2" /> User_{referral}
-                  </li>
-                ))}
-            </ul>
-            <div className="flex justify-center items-center mt-20">
-              {userData.refs && userData.refs.length <= 0 && (
-                <p className=" text-black">You don't have any referrals</p>
-              )}
-            </div>
-          </div>
-        </div>
+          {/* </div> */}
+        {/* </div> */} 
 
         {addFriendModal && (
           <div className="fixed z-40 inset-0 flex items-end justify-center bg-custom-gradient-tapgame transition-opacity duration-300">
