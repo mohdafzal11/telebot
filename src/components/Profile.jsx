@@ -13,7 +13,7 @@ const Profile = () => {
         alt="profile"
       />
 
-      <div className="text-black ">{userData?.chatId}</div>
+      <div className="text-black truncate w-10">{userData?.chatId}</div>
     </div>
   );
 };

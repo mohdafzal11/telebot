@@ -54,6 +54,7 @@ function Tasks() {
   const [levels, setLevels] = useState([]);
   const [levelModal, setLevelModal] = useState(false);
   const [levelModalData, setLevelModalData] = useState({});
+  const [socialMediaLink , setSocialMedia]=useState(false)
 
   const socialData = [
     {
@@ -318,25 +319,25 @@ function Tasks() {
     if (socialModalData.id == "twitter") {
       newData = {
         maxCoin: userData.maxCoin + 100000,
-        coin: userData.coin + 1000000,
+        coin: userData.coin + 100000,
         joinTwitter: true,
       };
     } else if (socialModalData.id == "youtube") {
       newData = {
         maxCoin: userData.maxCoin + 100000,
-        coin: userData.coin + 1000000,
+        coin: userData.coin + 100000,
         joinYoutube: true,
       };
     } else if (socialModalData.id == "instagram") {
       newData = {
         maxCoin: userData.maxCoin + 100000,
-        coin: userData.coin + 1000000,
+        coin: userData.coin + 100000,
         joinInstagram: true,
       };
     } else {
       newData = {
         maxCoin: userData.maxCoin + 100000,
-        coin: userData.coin + 1000000,
+        coin: userData.coin + 100000,
         joinTelegram: true,
       };
     }
@@ -682,15 +683,22 @@ function Tasks() {
                 </div>
 
                 <div>
-                  <button className="text-white font-bold text-xl bg-orange-400 px-4 py-1 border-white border-2 shadow-md rounded-sm">
+                  <button 
+                  onClick={()=>{setSocialMedia(true)
+                    window.open("https://www.goggle.com")
+                  }}
+                 
+                  className="text-white font-bold text-xl bg-orange-400 px-4 py-1 border-white border-2 shadow-md rounded-sm">
                     {socialModalData?.button1}
                   </button>
                 </div>
                
                 <div>
                   <button
+                   disabled={!socialMediaLink}
                     onClick={() => {
                       SocialCheckHandler();
+                      setSocialMedia(false)
                     }}
                     className="text-white font-bold text-xl bg-orange-400 px-28 py-2 border-white border-2 shadow-md rounded-sm"
                   >
@@ -733,7 +741,7 @@ function Tasks() {
                         Level - {levelModalData.index + 1}
                       </div>
                       <div className="w-[60vw] ">
-                        <div className="h-4 bg-orange-500 rounded-lg bg-progress-bar">
+                        <div className="h-4 bg-orange-500 rounded-lg ">
                           <div
                             className="h-full bg-[#FDCD45] rounded-lg bg-progress-bar"
                             style={{
@@ -792,6 +800,7 @@ function Tasks() {
                 <div>
                   <button
                     disabled={userData.maxCoin < levelModalData.end}
+                    
                     onClick={() => {
                       ClaimLevelHandler(levelModalData.index);
                     }}

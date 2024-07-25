@@ -270,7 +270,7 @@ const Levels = () => {
                   <img className=" p-1  h-8" src={profile2} alt="profile" />
                 </div>
                 <div className="text-black">
-                  <div>
+                  <div className="w-20 truncate">
                     {localStorage.getItem("chatId") !== user.id
                       ? `${user.id}`
                       : ` ${user.id}(you)`}
