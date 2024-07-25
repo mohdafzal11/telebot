@@ -36,6 +36,8 @@ import socialInstagram from "../../src/assets/instagramSocial.png";
 import { useNavigate } from "react-router-dom";
 import levelCircle from "../../src/assets/level-circel.png";
 import star from "../../src/assets/star.png";
+import rewardbg from "../../src/assets/rewardbg.png"
+
 
 function Tasks() {
   const [loading, setLoading] = useState(true); // Add loading state
@@ -719,7 +721,7 @@ function Tasks() {
             >
               <div className="flex flex-col items-center justify-center  space-y-3 h-[80%]">
                 <div className=" bg-level-gradient  w-[100vw] flex justify-center">
-                  <div className={`relative coin-container  transform mb-3`}>
+                  <div className={`relative coin-container  transform pb-6`}>
                     <img
                       src={imageData[levelModalData?.index]?.image}
                       className=""
@@ -727,7 +729,7 @@ function Tasks() {
                     <img
                       src={levelCircle}
                       alt=""
-                      className="absolute bottom-0  w-52"
+                      className="absolute bottom-1  w-52"
                     />
                   </div>
                 </div>
@@ -785,7 +787,7 @@ function Tasks() {
                     onClick={() => {
                       // ClaimLevelHandler(levelModalData.index);
                     }}
-                    className="flex justify-center items-center text-white font-bold text-xl bg-orange-400 px-2 py-0.5 border-white border-2 shadow-md rounded-sm"
+                    className="flex justify-center items-center text-white font-bold text-xl bg-orange-500 px-2 py-0.5 border-white border-2 shadow-md rounded-md"
                   >
                     <div className="flex justify-center items-center">
                       <img src={star} alt="" />
@@ -807,7 +809,7 @@ function Tasks() {
                     onClick={() => {
                       ClaimLevelHandler(levelModalData.index);
                     }}
-                    className=" text-white font-bold text-xl bg-orange-400 px-20 py-2 border-white border-2 shadow-md rounded-sm"
+                    className=" text-white font-bold text-xl bg-orange-500 px-20 py-2 border-white border-2 shadow-md rounded-md"
                   >
                     Claim
                   </button>

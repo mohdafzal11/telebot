@@ -294,7 +294,7 @@ const TapCoinGame = () => {
                 <div className="w-[40vw] ">
                   <div className="h-4 bg-orange-500 rounded-lg ">
                     <div
-                      className="h-full bg-[#FDCD45] rounded-lg"
+                      className="h-full bg-custom-gradient-tapgame rounded-lg"
                       style={{
                         width: `${
                           (userData.maxCoin / levelMinPoints[level]) * 100

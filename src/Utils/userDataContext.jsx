@@ -23,7 +23,7 @@ export const UserDataProvider = ({ children }) => {
   const [level, setLevel] = useState(1);
   const [users, setUsers] = useState([]);
   const [levelsData, setLevelsData] = useState([]);
-  const [showLevel , setShowLevel]=useState(1)
+  const [showLevel, setShowLevel] = useState(1);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -165,6 +165,9 @@ export const UserDataProvider = ({ children }) => {
   };
 
   const addRef = async (refId) => {
+    updateUserData({
+      referralCount: userData.referralCount + 1,
+    });
     try {
       const currentUserId = localStorage.getItem("chatId");
       const userDocRef = firestore.collection("users").doc(refId);
@@ -506,9 +509,7 @@ export const UserDataProvider = ({ children }) => {
   }
 
   const fetchUsers = async (specificUserId, minMaxCoin, maxMaxCoin) => {
-
-
-    console.log(specificUserId, minMaxCoin , maxMaxCoin)
+    console.log(specificUserId, minMaxCoin, maxMaxCoin);
     try {
       const usersRef = firestore.collection("users");
 
