@@ -35,7 +35,7 @@ import socialTwitter from "../../src/assets/twitterSocial.png";
 import socialInstagram from "../../src/assets/instagramSocial.png";
 import { useNavigate } from "react-router-dom";
 import levelCircle from "../../src/assets/level-circel.png";
-import star from "../../src/assets/star.png"
+import star from "../../src/assets/star.png";
 
 function Tasks() {
   const [loading, setLoading] = useState(true); // Add loading state
@@ -54,7 +54,7 @@ function Tasks() {
   const [levels, setLevels] = useState([]);
   const [levelModal, setLevelModal] = useState(false);
   const [levelModalData, setLevelModalData] = useState({});
-  const [socialMediaLink , setSocialMedia]=useState(false)
+  const [socialMediaLink, setSocialMedia] = useState(false);
 
   const socialData = [
     {
@@ -378,7 +378,6 @@ function Tasks() {
     setShowLevel(showLevel + 1);
   };
 
-  
   return (
     <WebAppProvider>
       <div className="py-4 overflow-hidden space-y-2">
@@ -667,9 +666,9 @@ function Tasks() {
             <div
               className={`relative bg-custom-gradient-tapgame rounded-t-lg w-screen shadow-lg h-screen transition-transform duration-300`}
             >
-              <div className="flex flex-col items-center justify-center mx-16 space-y-3 h-[80%]">
+              <div className="flex flex-col items-center justify-center mx-12 space-y-3 h-[80%]">
                 <div>
-                  <img src={socialModalData.image} className="h-40" alt="" />
+                  <img src={socialModalData.image} className="h-32" alt="" />
                 </div>
                 <div className="text-center text-2xl font-bold">
                   {socialModalData?.heading}
@@ -683,28 +682,31 @@ function Tasks() {
                 </div>
 
                 <div>
-                  <button 
-                  onClick={()=>{setSocialMedia(true)
-                    window.open("https://www.goggle.com")
-                  }}
-                 
-                  className="text-white font-bold text-xl bg-orange-400 px-4 py-1 border-white border-2 shadow-md rounded-sm">
+                  <button
+                    onClick={() => {
+                      setSocialMedia(true);
+                      window.open("https://www.goggle.com");
+                    }}
+                    className="text-white font-bold text-base bg-orange-400 px-3 py-1 border-white border-2 shadow-md rounded-sm"
+                  >
                     {socialModalData?.button1}
                   </button>
                 </div>
-               
-                <div>
-                  <button
-                   disabled={!socialMediaLink}
-                    onClick={() => {
-                      SocialCheckHandler();
-                      setSocialMedia(false)
-                    }}
-                    className="text-white font-bold text-xl bg-orange-400 px-28 py-2 border-white border-2 shadow-md rounded-sm"
-                  >
-                    {socialModalData?.button2}
-                  </button>
-                </div>
+
+                {socialMediaLink && (
+                  <div>
+                    <button
+                      disabled={!socialMediaLink}
+                      onClick={() => {
+                        SocialCheckHandler();
+                        setSocialMedia(false);
+                      }}
+                      className="text-white font-bold text-xl bg-orange-400 px-28 py-2 border-white border-2 shadow-md rounded-sm"
+                    >
+                      {socialModalData?.button2}
+                    </button>
+                  </div>
+                )}
               </div>
             </div>
           </div>
@@ -716,12 +718,8 @@ function Tasks() {
               className={`relative bg-custom-gradient-tapgame rounded-t-lg w-screen shadow-lg h-screen transition-transform duration-300`}
             >
               <div className="flex flex-col items-center justify-center  space-y-3 h-[80%]">
-               
-
                 <div className=" bg-level-gradient  w-[100vw] flex justify-center">
-                  <div
-                    className={`relative coin-container  transform mb-3`}
-                  >
+                  <div className={`relative coin-container  transform mb-3`}>
                     <img
                       src={imageData[levelModalData?.index]?.image}
                       className=""
@@ -734,51 +732,53 @@ function Tasks() {
                   </div>
                 </div>
 
-                <div className="flex w-[90Vw] justify-between items-center  text-black   shadow-md  px-2 border-orange-400 border rounded-xl py-1">
-                  <div className="flex  w-full justify-between items-center space-x-2">
-                    <div className="flex justify-center items-center">
-                      <div className="w-20">
-                        Level - {levelModalData.index + 1}
-                      </div>
-                      <div className="w-[60vw] ">
-                        <div className="h-4 bg-orange-500 rounded-lg ">
-                          <div
-                            className="h-full bg-[#FDCD45] rounded-lg bg-progress-bar"
-                            style={{
-                              width: `${
-                                (userData.maxCoin >
-                                levels[levelModalData.index].end
-                                  ? 1
-                                  : userData.maxCoin /
-                                    levels[levelModalData.index]?.end) * 100
-                              }%`,
-                            }}
-                          ></div>
+                {userData.maxCoin < levels[levelModalData.index].end ? (
+                  <div className="flex w-[90Vw] justify-between items-center  text-black   shadow-md  px-2 border-orange-400 border rounded-xl py-1">
+                    <div className="flex  w-full justify-between items-center space-x-2">
+                      <div className="flex justify-center items-center">
+                        <div className="w-20">
+                          Level - {levelModalData.index + 1}
                         </div>
-                      </div>
-                      <div
-                        onClick={() => {
-                          navigate("/levels");
-                        }}
-                      >
-                        <svg
-                          className="h-3"
-                          xmlns="http://www.w3.org/2000/svg"
-                          viewBox="0 0 320 512"
+                        <div className="w-[60vw] ">
+                          <div className="h-4 bg-orange-500 rounded-lg ">
+                            <div
+                              className="h-full bg-[#FDCD45] rounded-lg bg-progress-bar"
+                              style={{
+                                width: `${
+                                  (userData.maxCoin >
+                                  levels[levelModalData.index].end
+                                    ? 1
+                                    : userData.maxCoin /
+                                      levels[levelModalData.index]?.end) * 100
+                                }%`,
+                              }}
+                            ></div>
+                          </div>
+                        </div>
+                        <div
+                          onClick={() => {
+                            navigate("/levels");
+                          }}
                         >
-                          <path d="M310.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-192 192c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L242.7 256 73.4 86.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l192 192z" />
-                        </svg>
+                          <svg
+                            className="h-3"
+                            xmlns="http://www.w3.org/2000/svg"
+                            viewBox="0 0 320 512"
+                          >
+                            <path d="M310.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-192 192c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L242.7 256 73.4 86.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l192 192z" />
+                          </svg>
+                        </div>
                       </div>
                     </div>
                   </div>
-                </div>
+                ) : (
+                  <div className="flex  justify-between items-center bg-[#FFFFE5] text-black   shadow-md  px-2 border-orange-400 border rounded-xl py-1">
+                    <div className="px-3 font-bold">
+                      Level - {levelModalData.index + 1} Completed
+                    </div>
+                  </div>
+                )}
 
-                <div>
-                  <h1 className="text-xl font-bold">
-                    you will get this reward...
-                  </h1>
-                </div>
-                 
                 <div>
                   <button
                     disabled={userData.maxCoin < levelModalData.end}
@@ -787,24 +787,27 @@ function Tasks() {
                     }}
                     className="flex justify-center items-center text-white font-bold text-xl bg-orange-400 px-2 py-0.5 border-white border-2 shadow-md rounded-sm"
                   >
-                    <div className="flex justify-center items-center"><img src={star} alt="" /></div>
+                    <div className="flex justify-center items-center">
+                      <img src={star} alt="" />
+                    </div>
                     <span>Reward</span>
                   </button>
                 </div>
 
                 <div className="flex justify-center items-center space-x-2">
-                  <div><img src={dollar} alt="" className="h-8"/></div>
+                  <div>
+                    <img src={dollar} alt="" className="h-8" />
+                  </div>
                   <div className="text-2xl font-bold"> 100,000</div>
                 </div>
 
                 <div>
                   <button
                     disabled={userData.maxCoin < levelModalData.end}
-                    
                     onClick={() => {
                       ClaimLevelHandler(levelModalData.index);
                     }}
-                    className="text-white font-bold text-xl bg-orange-400 px-20 py-2 border-white border-2 shadow-md rounded-sm"
+                    className=" text-white font-bold text-xl bg-orange-400 px-20 py-2 border-white border-2 shadow-md rounded-sm"
                   >
                     Claim
                   </button>
