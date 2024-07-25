@@ -56,7 +56,7 @@ const Boost = () => {
     if (tapPerCoin > 1) {
       timer = setTimeout(() => {
         setTapPerCoin(1);
-      }, 3000); // 3000 milliseconds = 3 seconds
+      }, 3000); 
     }
 
     return () => clearTimeout(timer);
@@ -129,7 +129,6 @@ const Boost = () => {
     updateCoinValue(coinValue - activeBoost.cost);
 
     if (activeBoost.name == "Full Energy") {
-      console.log("INsdie full Energu");
       updateScore();
     } else if (activeBoost.name == "AutoTap") {
       setAutoTapAmount(1);

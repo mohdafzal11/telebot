@@ -215,31 +215,6 @@ const Referral = () => {
           </p>
         </div>
 
-        {/* {userData?.invitefriendsclaim?.length > 0 &&
-          userData.invitefriendsclaim.map((user, index) => (
-            <div className="flex justify-between px-4 items-center gap-6  bg-[#FDE5C1]  rounded-lg shadow-md border border-orange-400 py-2 mx-4">
-              <div className="flex space-x-4">
-                <div className="p-2  rounded-full bg-[#FA891B]">
-                  <img className=" p-1  h-8" src={profile2} alt="profile" />
-                </div>
-                <div className="text-black flex items-center">
-                  <div className="w-20 truncate">{user?.chatId}</div>
-                </div>
-              </div>
-              <div>
-                <img src={ranks[index]} alt="" />
-              </div>
-              <div className="w-28 flex bg-[#FA891B] items-center justify-center px-3 py-1 rounded-lg space-x-2">
-                <div className="">
-                  <img src={dollar} alt="" className="h-7" />
-                </div>
-                <div>20M</div>
-              </div>
-            </div>
-          ))} */}
-
-        {/* add friends  */}
-        {/* <div className="space-y-2 mx-4 mb-4"> */}
         <h1 className="text-center text-2xl font-bold">Invite Friends</h1>
 
         <div className="mx-4 space-y-1">
